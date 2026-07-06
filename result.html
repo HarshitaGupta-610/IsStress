@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,9 +14,9 @@
 
     <h1>Your Stress Result</h1>
 
-    <h2>Moderate Stress</h2>
+    <h2></h2>
 
-    <h3>Stress Score: 65 / 100</h3>
+    <h3></h3>
 
     <p><b>Recommendations</b></p>
 
@@ -28,6 +29,25 @@
     </ul>
 
 </div>
+
+<script>
+let score = Number(localStorage.getItem("score"));
+
+let level = "";
+
+if (score <= 20) {
+    level = "Low Stress";
+} else if (score <= 35) {
+    level = "Moderate Stress";
+} else if (score <= 50) {
+    level = "High Stress";
+} else {
+    level = "Severe Stress";
+}
+
+document.querySelector("h2").innerHTML = level;
+document.querySelector("h3").innerHTML = "Stress Score: " + score + " / 60";
+</script>
 
 </body>
 </html>
