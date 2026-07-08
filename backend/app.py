@@ -2,13 +2,20 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import joblib
 import pandas as pd
+from pathlib import Path
 
 # Create Flask app
 app = Flask(__name__)
 CORS(app)
 
 # Load the trained model
-model = joblib.load("stress_model.pkl")
+BASE_DIR = Path(__file__).resolve().parent
+MODEL_PATH = BASE_DIR / "stress_model.pkl"
+
+if not MODEL_PATH.exists():
+    raise FileNotFoundError(f"Model file not found: {MODEL_PATH}")
+
+model = joblib.load(MODEL_PATH)
 
 
 @app.route("/")
