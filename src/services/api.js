@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:5000/predict';
+const API_URL = "https://isstressbackend.onrender.com/predict";
 
 export async function predictStress(payload) {
   const response = await fetch(API_URL, {
